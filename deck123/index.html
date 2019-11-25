@@ -1,0 +1,490 @@
+<!-- <?php
+	$totalValue= 0;
+ ?>
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deck123.com</title>
+	 <!-- font css -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
+
+	<!-- jQuery (JavaScript plugins) -->
+	<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet"> 
+	<!-- <script type="text/javascript" src="js/paypal.js"></script> -->
+
+	 <!-- Bootstrap -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <!-- custom css -->
+	<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+	<div class="main-wrap">
+		<div class="row">
+			<div class="col-md-6">
+				<input type="radio" name="selector" id="inHouse" onchange="onToggleonehrDeck()" checked>
+				<label for="inHouse">Book Your In-House Measurement</label>
+			</div>
+			<div class="col-md-6">
+				<input type="radio" name="selector" id="oneHourCheck" onchange="onToggleonehrDeck()">
+				<label for="oneHourCheck">$99 Your 1 Hour Deck Consultation With Design</label>
+			</div>
+		</div>
+		
+	</div>
+	<div class="main-wrap" id="calDiv">
+
+			
+				<div class="row">
+					<div class="example-list">
+						<input type="radio" name="example" id="example1" value="example1" onchange="toggleExample()" checked>
+						<label for="example1">Example 1</label>
+					</div>
+					<div class="example-list">
+						<input type="radio" name="example" id="example2" value="example2" onchange="toggleExample()">
+						<label for="example2">Example 2</label>
+					</div>
+					<div class="example-list">
+						<input type="radio" name="example" id="example3" value="example3" onchange="toggleExample()">
+						<label for="example3">Example 3</label>
+					</div>
+				</div>
+				
+				<div class="body-wrap" id="calculateWrapper">
+					<div class="calDisableWrapper" id="calDisableWrapperID">
+						<!-- <div class="loader" ></div> -->
+					</div>
+					<label>Choose Your Deck Size:</label>
+					
+					<div class="row">
+						<div class="deck-wrap">
+							<div class="col-md-8">
+								<div class="length-col">
+									<div class="form-group">
+									<span>Length :</span>	
+									<select class="form-control" name="" id="length" onChange="onSelectLength();">
+										<option selected="selected" value="0">Select One</option>
+										
+									</select>
+									</div>
+								</div>
+
+								<div class="width-col">
+									<div class="form-group">
+									<span>Width :</span>	
+									<select class="form-control" name="" id="width" onChange="onSelectWidth();">
+										<option selected="selected" value="0">Select One</option>
+																			
+									</select>
+									</div>
+									
+								</div>
+
+							
+
+							<p style="text-align: center;">OR</p>
+							</div>
+							<div class="clearfix"></div>
+							<div class="deck-height">
+							<div class="form-group top-gap">
+							<span>Height :</span>	
+							<select class="form-control" name="" id="height" onChange="onSelectHeight();">
+								<option selected="selected" value="0">Select One</option>
+							</select>
+							<label class="error" id="heightErr"></label>
+							</div>
+						</div>
+
+							<div class="col-md-8">
+							<div class="form-group"><label>Total Desired Square Footage:</label>
+								<input class="form-control" name="" type="text" id="totalSquareft" value="" placeholder="Enter square feet. or select length and width upper">
+								<label class="error" id="sqftErr"></label>
+							</div>
+							</div>
+							<div class="clearfix"></div>
+
+
+							
+
+						
+
+						</div>
+
+					</div>
+
+					<div class="divider"></div>
+					
+					<div class="row">	
+						
+						<div class="col-md-8">
+							<div class="form-group decking-row">
+							<label>Choose Your Decking Materials:</label>	
+							
+								<select class="form-control" name="deckingMaterial" id="deckingMaterial" onchange="">
+									<!-- <option selected="selected">Select One</option> -->
+									
+									<option value="22" selected="selected">Pressure Treated</option>
+									<option value="36">Trex</option>
+									<option value="38">Timber-Tech</option>
+									<option value="40">Azek</option>
+																		
+								</select>
+								<button type="button" class="btn qbt" data-toggle="modal" data-target="#deckingModal">
+								  ?
+								</button>
+							</div>
+						</div>	
+						<div class="col-md-4">
+							<label style="float: right;" id="deckMaterialTotalShow" class="stepValue">$0</label>
+						</div>
+					</div>
+								
+					
+
+					<div class="divider"></div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="checkbox" name="" id="isRailing" onchange="onToggleIsRailing()">
+							<label for="isRailing">Add railings</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="form-group decking-row"><label>Choose Your Railing Style:</label>
+								
+								<select class="form-control" name="railingStyle" id="railingStyle">
+									
+									
+									<option value="30" selected="selected">Pressure Treated</option>
+									<option value="40">PVC White</option>
+									<option value="60">Trex</option>
+									<option value="80">Azek</option>
+																		
+								</select>
+								<!-- <br> -->
+								<button type="button" id="railingShowBtn" class="btn qbt" data-toggle="modal" data-target="#railingModal">
+									?
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label style="float: right;" id="railingMaterialTotalShow" class="stepValue">$0</label>
+						</div>				
+					</div>
+					
+								
+					
+					
+					<div class="row">	
+						
+						<div class="col-md-6">
+							<label>Total Linear Footage(1-1000) :</label>	
+							<br>
+							<input type="radio" id="linearFootage1" value="autolinearFootage" name="linearFootage">
+							<label for="linearFootage1">L + W + L</label>
+							<br>
+							<label class="info" id="linearFootage1Error"></label>
+							<p for="linearFootage1" style="float: right;">OR</p>
+						</div>
+						<div class="col-md-6">
+							
+							<!-- <br> -->
+								<input type="radio" id="linearFootage2" value="manuallinearFootage" name="linearFootage" checked="true">
+								<label for="linearFootage2">Enter your own measurement (1 to 100)</label>
+							<div class="form-group">
+							
+							<input class="form-control" name="" type="text" id="linearMeasureInput" value="" placeholder="Enter your own measurement">
+							<label class="error" id="linearErr"></label>
+							</div>
+						</div>	
+								
+					</div>
+					
+					<div class="divider"></div>
+					
+					<div class="row">	
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="checkbox" name="" id="isAddSteps" onchange="onToggleSteps()">
+								<label for="isAddSteps">Add Some Steps</label>
+								<label style="float: right;" id="stepsTotalShow" class="stepValue">$0</label>
+								<select class="form-control" name="" disabled="true" id="numberOfSteps">
+									<option selected="selected" value="0">Select One</option>
+									
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+																		
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							<input type="checkbox" name="" id="isPermit" onchange="onTogglePermit()">	
+							<label for="isPermit">Permits Application</label>	
+							<label style="float: right;" id="permitTotalShow" class="stepValue">$0</label>
+							<p class="breakdownText">check if you want us to handle.</p>
+							<!-- <input class="form-control" name="" type="text"> -->
+							</div>
+						</div>
+					</div>
+					
+					<div class="divider"></div>
+
+					<div class="row">	
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Total Final Online:</label>
+								<p id="showTotalAmount">$0</p>
+								<h4><span style="font-size: 20px;" id="showpercentagevalue">$0</span> (Save 5% When You Order Online)</h4>
+								<!-- <p>Save 5% When You Order Online</p> -->
+								<h2 id="showActualValue">$0</h2>
+								
+							</div>
+						</div>				
+						<div class="col-md-6">
+							<label>Payments As Follows While We Are building Your Deck:</label>
+							<p class="breakdownText">10% <span id="tenPercent">$0</span> @ Signing Contract Between Contractor & Owner.</p>
+							<p class="breakdownText">20% <span id="twentyPercent">$0</span> @ Final Inspection Sign Off By Building Inspector Or Owner Approval.</p>
+							<p class="breakdownText">30% <span id="thirtyPercent">$0</span> @ Footing Inspection Sign Off By Building Inspector Or Owner Approval.</p>
+							<p class="breakdownText">40% <span id="fourtyPercent">$0</span> @ Framing Inspection Sign Off By Building Inspector Or Owner Approval.</p>
+							
+						</div>		
+					</div>
+				
+				</div>
+				
+				
+				
+			<!-- Decking Material Modal -->
+			<div class="modal fade" id="deckingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-body">
+			        <img src="images/PressureTreated.jpeg" id="deckImg" alt="img" height="150" width="150" />
+					<label style="margin-left: 40px;" id="deckNameVal">Pressure Treated ($22)</label>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Railing Material Modal -->
+			<div class="modal fade" id="railingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-body">
+			        <img src="images/PressureTreatedRailing.jpg" id="railingImg" alt="img" height="150" width="150" />
+					<label style="margin-left: 40px;" id="railingNameVal">Pressure Treated ($46)</label>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	</div>
+	<div class="main-wrap" id="formWrapper">
+		<div class="loaderWrapper" id="loader">
+			<div class="loader" ></div>
+		</div>
+		<h3 id="paySecHeadingText">Pay 10% of the amount to place the order.</h3>
+		<div class="body-wrap" >
+
+			<!-- <form id="userForm"> -->
+				<div class="row">	
+					<div class="col-md-6">
+						<div class="form-group"><label>Full Name:</label>
+							<input class="form-control" name="" type="text" id="name" value="" placeholder="Enter your full name" onblur="payNow()" >
+							<label class="error" id="nameErr"></label>
+						</div>
+					</div>	
+					<div class="col-md-6">
+						<div class="form-group"><label>Mobile:</label>
+							<input class="form-control" name="" type="text" id="phone" value="" placeholder="Enter your mobile number" onblur="payNow()" >
+							<label class="error" id="mobileErr"></label>
+						</div>
+					</div>	
+						
+				</div>
+
+				<div class="row">	
+					
+					<div class="col-md-6">
+						<div class="form-group"><label>Address:</label>
+							<input class="form-control" name="" type="text" id="placeInput" value="" placeholder="Enter your address" onblur="payNow()" >
+							<label class="error" id="addressErr"></label>
+						</div>
+					</div>	
+					<div class="col-md-6">
+						<div class="form-group"><label>ZIP:</label>
+							<input class="form-control" name="" type="text" id="zip" value="" placeholder="Enter your ZIP code" onblur="payNow()" >
+							<label class="error" id="zipErr"></label>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6" id="paySection">
+						<label style="font-size: 30px;"><i class="fa fa-check-circle" style="font-size: 30px; color: green;"></i> <span id="showTenParcentVal">$0</span></label>
+						<br>
+						<p id="smallpaySecHeadingText">10% of the total amount.</p>
+						<br>
+						<input type="hidden" id="totalAmount" name="value">
+
+						<input type="checkbox" name="" id="termsCheck" onchange="">	
+						<label for="termsCheck" id="acceptText" style="font-weight: 300; font-size: 13px;">please accept the <a href="termsAndConditions.php" target="_blank">terms and conditions</a></label>	
+						<br />
+						<button class="btn btn-primary btn-lg" id="stripe-button" disabled>
+					        Checkout <span class="glyphicon glyphicon-shopping-cart"></span>
+				      	</button>
+				      	
+				      	<br>
+				      	<label class="error" id="mailErr" style="font-weight: 600;"></label>
+				      	
+					</div>
+
+				</div>
+				<div class="row" style="text-align: center; margin-top: 10px;">
+					<label>
+			      		<img src="images/stripe-payment-logo.png" class = "img-responsive" alt = "Stripe payment card" style="width: 300px;">
+			      	</label>
+						
+				</div>
+
+			<!-- </form> -->
+		</div>
+	</div>
+	<div class="main-wrap" style="background-color: #98C587;" id="successWrapper">
+		<h3 style="color: white;">Order placed successfully!</h3>
+	</div>
+</div>
+
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>	
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+	/** 
+		* on document ready
+	*/
+	$(document).ready(function(){
+		var lengthSelect = '';
+		for (i=1;i<=100;i++){
+			console.log(i)
+			lengthSelect += '<option val=' + i + '>' + i + '</option>';
+		}
+		$('#length').html(lengthSelect);
+		
+		var widthSelect = '';
+		for (i=1;i<=100;i++){
+			console.log(i)
+			widthSelect += '<option val=' + i + '>' + i + '</option>';
+		}
+		$('#width').html(widthSelect);
+
+		var heightSelect = '';
+		for (i=1;i<=20;i++){
+			console.log(i)
+			heightSelect += '<option val=' + i + '>' + i + '</option>';
+		}
+		$('#height').html(heightSelect);
+		
+		$('#length').attr("disabled", false);
+		$('#width').attr("disabled", true);
+		$('#linearFootage1').attr("disabled", true);
+		$('#linearFootage1Error').html("Select length and width to enable L+W+L");
+		$('#paySection').hide();
+		$('#successWrapper').hide();
+		$('#loader').hide();
+		$('#calDisableWrapperID').hide();
+		toggleExample();
+
+		
+	});
+</script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript">
+	document.getElementById('phone').addEventListener('input', function (e) {
+	  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+	  e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+	});
+</script>
+<script>
+
+	var handler = StripeCheckout.configure({
+	  key: 'pk_test_xB9AbOqRRJ3hhmnJNOzSprMH00Y7dlGin1',
+	  image: 'images/deck123.png',
+	  locale: 'auto',
+	  token: function(token) {
+	    // You can access the token ID with `token.id`.
+	    // Get the token ID to your server-side code for use.
+	    // console.log(token);
+
+	    if(token.id != ''){
+	    	$('#stripe-button').attr('disabled', true);
+	    	$('#loader').fadeIn();
+	    	$.ajax({
+			    url:"sendMail.php",
+			    method:"POST",
+			    data:{token:token.id, email: token.email, name:$('#name').val(), mobile: $('#phone').val(), address: $('#placeInput').val(), zip: $('#zip').val(), amount: $('#totalAmount').val()},
+			    dataType:"json",
+			    success:function(data){
+			    	// console.log(data);
+			      	if(data.err == 0){
+			      		$('#formWrapper').hide();
+			      		$('#successWrapper').fadeIn();
+			      	}
+			      	else{
+			      		$('#mailErr').html(data.msg);
+			      		$('#stripe-button').attr('disabled', false);
+			      		$('#loader').hide();
+			      	}
+			    },
+			    error:function(err){
+			    	// console.log(err);
+			    }
+	  		});
+	    }
+	    else{
+	    	$('#loader').hide();
+	    	$('#stripe-button').attr('disabled', false);
+	    }
+	  }
+	});
+
+	document.getElementById('stripe-button').addEventListener('click', function(e) {
+		if($('#termsCheck').is(":checked")){
+			$('#acceptText').css({ 'color': 'black', 'font-weight': '300'});
+		  // Open Checkout with further options:
+			handler.open({
+				name: 'deck123.com',
+				description: 'Buy Online and SAVE!!',
+				amount: $('#totalAmount').val() * 100
+			});
+			e.preventDefault();
+		}
+		else{
+			$('#acceptText').css({ 'color': 'red', 'font-weight': '400'});
+		}
+	});
+
+	// Close Checkout on page navigation:
+	window.addEventListener('popstate', function() {
+	  handler.close();
+	});
+</script>
+
+</body>
+</html>

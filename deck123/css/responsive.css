@@ -1,0 +1,96 @@
+@media only screen and (max-width: 1200px) {
+
+.rightulpart ul li a{ padding:11px 7px; font-size:11px;}
+.leftulcont ul li{ margin-left:14px;}
+.navbar-nav > li > a{ line-height:30px;}
+
+.joblistleftmar{ margin-left:0;}
+.nav-logo{ padding:0 120px !important}
+.nav > li > a{ padding:10px 0;}
+.navbar-nav > li > a{ font-size:12px;}
+.candifullpart ul li{ width:12%; display:inherit; float:left;}
+.searchbottom{ bottom:-70px;}
+}
+
+@media only screen and (max-width: 1023px) {
+
+.leftsearch{ width:100%;}
+.rightsearch{ width:100%;}
+.bottomsearchpart::after{ display:none;}
+.bottomsearchpart::before{ display:none;}
+.searchbottom{ position:inherit; bottom:inherit; background:#eee; padding:10px 0;}
+.banneruptext{ background:#373836; position:inherit; top:0; padding-bottom:10px;}
+.banneruptext h1{ font-size:40px;}
+.vacancy-part ul li i{ top:14%;}
+.vacancy-part ul li p{ line-height:20px;}
+.subspart input[type="text"]{ width:62%;}
+.green-bgpart{ height:auto; margin-bottom:0;}
+.candifullpart{ position:inherit; bottom:inherit;}
+.candifullpart ul li{ margin:10px;}
+.candifullpart ul li{ width:auto; display:inline-block; float:none;}
+
+}
+@media only screen and (max-width: 991px){
+.nav-logo{ padding:0!important;}
+.joblistleftmar{ margin-left:0;}
+}
+
+@media only screen and (max-width: 767px) {
+
+.topcall{ text-align:center;}
+.leftulcont{ float:none; display:inline-block;}
+.leftulcont ul li{ float:none; display:inline-block;}
+.rightulpart{ float:none; display:inline-block;}
+.navbar-fixed-bottom, .navbar-fixed-top{ position:inherit;}
+.scrollspy_menu .navbg{ background:#000; height:auto;}
+header{ position:inherit;}
+.banner{ padding-top:0;}
+.navbar{ margin-bottom:0;}
+.bottomsearchpart{ width:100%; padding:10px;}
+.vacancy-part ul li i{ top:30%;}
+.banner-icon li{ width:86px; height:86px; float:none; display:inline-block; margin-top:10px;}
+.banner-icon li font{ font-size:12px;}
+.reslogo{ display:block; width:102px; position:absolute; z-index:999; left:2%;}
+.reslogo img{ max-width:100%;}
+.nav-log{ display:none!important;}
+header .navbg{ padding:0;}
+.navbar-collapse.in{ overflow:inherit;}
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse{ max-height:inherit;}
+.navbar-nav > li > a:hover::before{ left:48%;}
+.navbar-nav > li > a.active::before{ left:48%;}
+.scrollspy_menu .navbar-nav > li{ border-bottom:1px solid #fff; padding:0; background:none;}
+.navbar__initial .navbar-nav > li{ padding:0!important;}
+.menumidnav{ margin-bottom:0;}
+.bottomsearchpart input[type="submit"]{ width:90%;}
+.green-bgpart p{ width:100%;}
+.leftfootpart{ margin-bottom:20px;}
+.lowerfooter{ text-align:center;}
+.leftlowerfooter{ float:none; display:inline-block;}
+.rightlowerfooter{ float:none; display:inline-block;}
+
+}
+
+@media only screen and (max-width: 599px) {
+
+
+}
+
+@media only screen and (max-width: 480px){
+
+.leftsearch{ width:100%;}
+.rightsearch{ width:100%; margin-top:10px;}
+.banneruptext h1 { font-size:28px;}
+.subspart input[type="text"]{ width:70%;}
+.leftfootpart ul{ padding:0;}
+
+}
+
+@media only screen and (max-width: 367px) {
+
+.rightulpart ul li a{ font-size:9px;}
+
+}
+
+@media only screen and (max-width: 350px) {
+
+}
